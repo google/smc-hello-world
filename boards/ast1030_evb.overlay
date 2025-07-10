@@ -1,0 +1,42 @@
+/{
+	aliases {
+		watchdog-resets-dev = &wdt2;
+	};
+};
+
+&sram0 {
+	reg = <0 DT_SIZE_K(640)>, <0x90000 DT_SIZE_K(128)>;
+};
+
+&wdt0 {
+	status = "okay";
+	wdt@1 {
+		status = "okay";
+	};
+
+	wdt@2 {
+		status = "okay";
+	};
+};
+
+&udc {
+	status = "okay";
+	cdc_acm_uart0: cdc_acm_uart0 {
+		compatible = "zephyr,cdc-acm-uart";
+		status = "okay";
+		label = "CDC_ACM_0";
+	};
+};
+
+&adc0 {
+	status = "okay";
+	pinctrl-0 = <&pinctrl_adc0_default &pinctrl_adc1_default
+		&pinctrl_adc2_default &pinctrl_adc3_default
+		&pinctrl_adc4_default &pinctrl_adc5_default
+		&pinctrl_adc6_default &pinctrl_adc7_default>;
+};
+
+&pwm {
+	status = "okay";
+	pinctrl-0 = <&pinctrl_pwm0_default &pinctrl_pwm1_default>;
+};

@@ -1,0 +1,58 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+manifest:
+  self:
+    path: smc-hello-world
+
+  remotes:
+    - name: open-compute
+      url-base: https://github.com/zephyrproject-rtos
+    - name: zephyr-aspeed
+      url-base: https://github.com/AspeedTech-BMC
+    - name: zephyr-upstream
+      url-base: https://github.com/zephyrproject-rtos
+    - name: openbmc
+      url-base: https://github.com/openbmc
+
+  projects:
+    # This will be patched with smc-common/thirdparty/libmctp
+    - name: libmctp
+      remote: openbmc
+      repo-path: libmctp
+      revision: f2988977efb4ad8da523b6563b3f4cdbcd2469ed
+    # This will be patched with smc-common/thirdparty/libpldm
+    - name: libpldm
+      remote: openbmc
+      repo-path: libpldm
+      revision: 0585de95306d3e4c04f89dbed2bc413a9dee8cd6
+    # This will be patched with smc-common/thirdparty/libbej
+    - name: libbej
+      remote: openbmc
+      repo-path: libbej
+      revision: c14fab6eebc3455bc4111bba2ebcd41f7c52be97
+    - name: smc-common
+      remote: open-compute
+      repo-path: smc-common
+      revision: main
+    - name: zephyr
+      remote: zephyr-aspeed
+      repo-path: zephyr
+      revision: aspeed-main-v2.6.0
+      west-commands: scripts/west-commands.yml
+    - name: cmsis
+      remote: zephyr-upstream
+      repo-path: cmsis
+      revision: c3bd2094f92d574377f7af2aec147ae181aa5f8e
+      path: modules/hal/cmsis

@@ -1,0 +1,76 @@
+{
+    "SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_1",
+    "ProfileName": "SoftwareInventory Profile",
+    "ProfileVersion": "0.0.1",
+    "OwningEntity": "",
+    "ContactInfo": "",
+    "RequiredProfiles": {
+        "DMTFBasic": {
+            "MinVersion": "1.0.0"
+        }
+    },
+    "Resources": {
+        "SoftwareInventory": {
+            "MinVersion": "1.5.0",
+            "PropertyRequirements": {
+                "ReadRequirement": "Mandatory",
+                "@odata.id": {
+                    "ReadRequirement": "Mandatory"
+                },
+                "@odata.type": {
+                    "ReadRequirement": "Mandatory"
+                },
+                "Description": {
+                    "ReadRequirement": "Mandatory"
+                },
+                "Id": {
+                    "ReadRequirement": "Mandatory"
+                },
+                "Name": {
+                    "ReadRequirement": "Mandatory"
+                },
+                "Oem": {
+                    "ReadRequirement": "Mandatory",
+                    "PropertyRequirements": {
+                        "Smc": {
+                            "ReadRequirement": "Mandatory",
+                            "PropertyRequirements": {
+                                "BuildInfo": {
+                                    "ReadRequirement": "Mandatory"
+                                }
+                            }
+                        }
+                    }
+                },
+                "RelatedItem": {
+                    "ReadRequirement": "Mandatory"
+                },
+                "RelatedItem@odata.count": {
+                    "ReadRequirement": "Mandatory"
+                },
+                "Updateable": {
+                    "ReadRequirement": "Mandatory"
+                },
+                "Version": {
+                    "ReadRequirement": "Mandatory"
+                },
+                "Status": {
+                    "PropertyRequirements": {
+                        "State": {
+                            "ReadRequirement": "Mandatory",
+                            "Values": [
+                                "Absent",
+                                "Disabled",
+                                "Enabled"
+                            ]
+                        },
+                        "Health": {
+                            "ReadRequirement": "Mandatory"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
