@@ -123,3 +123,11 @@ $ west build -p auto -b ast1030_evb  smc-hello-world
 ```
 
 The binary will be inside `test-hello-world/build/zephyr/zephyr.bin`
+
+## Testing smc-hello-world
+
+Once you have the binary running on the microcontroller, connect it to the host
+via USB. Verify that you can see the atatched device on the host with `lsusb`
+and then it creates a new `ttyACM*` in the host. Use
+[rde-tester](https://github.com/google/rde-tester) to communicate with the
+device.
