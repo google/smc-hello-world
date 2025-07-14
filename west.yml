@@ -17,8 +17,8 @@ manifest:
     path: smc-hello-world
 
   remotes:
-    - name: open-compute
-      url-base: https://github.com/zephyrproject-rtos
+    - name: google
+      url-base: https://github.com/google
     - name: zephyr-aspeed
       url-base: https://github.com/AspeedTech-BMC
     - name: zephyr-upstream
@@ -43,7 +43,7 @@ manifest:
       repo-path: libbej
       revision: c14fab6eebc3455bc4111bba2ebcd41f7c52be97
     - name: smc-common
-      remote: open-compute
+      remote: google
       repo-path: smc-common
       revision: main
     - name: zephyr
