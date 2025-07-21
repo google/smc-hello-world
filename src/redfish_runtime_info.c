@@ -28,6 +28,7 @@
 #include <smc/rde/runtime_info.h>
 #include <smc/sensor.h>
 #include <smc/system.h>
+#include <smc/utils.h>
 #include <smc/wdt.h>
 #include <stdio.h>
 
@@ -52,13 +53,13 @@ int redfish_get_chassis_runtime_info(const struct redfish_chassis* chassis,
     }
 
     const char* serial = "ABCD1234";
-    strncpy(info->serial_number, serial, strlen(serial));
+    smc_copy_str(info->serial_number, REDFISH_CHASSIS_SERIAL_NUM_LEN, serial);
 
     const char* part_number = "1234FFAABB";
-    strncpy(info->part_number, part_number, strlen(part_number));
+    smc_copy_str(info->part_number, REDFISH_CHASSIS_PART_NUMBER_LEN, part_number);
 
     const char* name = "SomeChassis";
-    strncpy(info->name, name, strlen(name));
+    smc_copy_str(info->name, REDFISH_CHASSIS_NAME_LEN, name);
 
     return 0;
 }
@@ -77,13 +78,15 @@ int redfish_get_drive_runtime_info(
     IS_PARAM_NULL(runtime_info, "runtime_info NULL in drive_runtime_info");
 
     const char* serial = "EFGH1234";
-    strncpy(runtime_info->serial_number, serial, strlen(serial));
+    smc_copy_str(runtime_info->serial_number, REDFISH_DRIVE_SERIAL_NUM_LEN,
+                serial);
 
     const char* part_number = "1234FFAABB";
-    strncpy(runtime_info->part_number, part_number, strlen(part_number));
+    smc_copy_str(runtime_info->part_number, REDFISH_DRIVE_PART_NUMBER_LEN,
+                part_number);
 
     const char* model = "SomeHDDModel";
-    strncpy(runtime_info->model, model, strlen(model));
+    smc_copy_str(runtime_info->model, REDFISH_DRIVE_MODEL_LEN, model);
 
     return 0;
 }
@@ -171,7 +174,7 @@ int redfish_get_storage_controller_runtime_info(
     info->state = REDFISH_STATUS_STATE_ENABLED;
 
     const char* version = "1.2.4.0";
-    strncpy(info->firmware_version, version, strlen(version));
+    smc_copy_str(info->firmware_version, REDFISH_FIRMWARE_VERS_BUFFER_SIZE, version);
     return 0;
 }
 
